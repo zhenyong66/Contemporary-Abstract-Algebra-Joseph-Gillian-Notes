@@ -1296,7 +1296,11 @@ Figure \ref{thm4.1} shows Theorem 4.1 and its corollaries for $|a|=6$.
 \subsection{Classification of Subgroups of Cyclic Groups}
 \fbox{\parbox{\linewidth}{
 \begin{theorem}[Fundamental Theorem of Cyclic Groups]
-    Let $G$ be cyclic. Then $H \leq G \implies$ $H$ is cyclic. Moreover, if $|\langle a\rangle|=n$, then
+    Let $G$ be cyclic. Then 
+    \begin{equation*}
+        H \leq G \implies H \text{ is cyclic.}
+    \end{equation*}
+     Moreover, if $|\langle a\rangle|=n$, then
         \begin{enumerate}
             \item $H \leq \langle a \rangle \implies |H|\mid n$.
             \item $k \mid n, k>0, !\exists H \leq \langle a \rangle: |H|=k, H = \langle a^{n/k} \rangle$.
@@ -3649,7 +3653,7 @@ Figure \ref{composition_permutation} shows the composition of permutations $\sig
      It is possible that $h'=h$ or $h''=h$.
      \\ \\
      \fbox{\parbox{\linewidth}{
-     \begin{theorem}
+     \begin{theorem}[Normal Subgroup Test]
         Let $G$ be a group and $H\leq G$. Then
         \begin{equation*}
             H \lhd G \iff \forall x \in G, xHx^{-1} \subseteq H.
@@ -4128,11 +4132,11 @@ Figure \ref{composition_permutation} shows the composition of permutations $\sig
         \subsection{Internal Direct Products}
         \fbox{\parbox{\linewidth}{
         \begin{definition}
-            If
+            Let $H,K \lhd G$. If
             \begin{equation*}
-                H,K \lhd G, \quad G=HK=\{hk:h \in H, k \in K\}, \quad \text{and} \quad H \cap K = \{e\},
+                \quad G=HK=\{hk:h \in H, k \in K\}, \quad \text{and} \quad H \cap K = \{e\},
             \end{equation*}
-            then $G$ is the \textit{internal direct product} of $H,K$, denoted $G = H \times K$, 
+            then $G=H\times K$ is the \textit{internal direct product} of $H,K$.
         \end{definition}
         }}
         \\ \\
@@ -4781,13 +4785,618 @@ Figure \ref{composition_permutation} shows the composition of permutations $\sig
     \subsection{The Fundamental Theorem}
     \fbox{\parbox{\linewidth}{
     \begin{theorem}[Fundamental Theorem of Finite Abelian Groups]
-       Every finite Abelian group is a direct product of cyclic groups of prime-power order Moreover, the number of terms in the product and the orders of the cyclic groups are uniquely determined by the group.
+    Let $G$ be a finite Abelian group. Then
+    \begin{equation*}
+        G = H_1 \oplus H_2 \oplus \cdots \oplus H_k,
+    \end{equation*}
+    where $H_i$'s are cyclic groups of order prime-power, i.e. $|H_i|=p_i^{n_i}$. Moreover, the number of $H_i$ in the product and $|H_i|$ are uniquely determined by $G$.
     \end{theorem}
     }}
     
+    \begin{note}
+        Let $G$ be a finite Abelian group. Then by the Fundamental Theorem,
+        \begin{equation*}
+            G = H_1 \oplus H_2 \oplus \cdots \oplus H_k,
+        \end{equation*}
+        where $H_i$'s are cyclic and $|H_i|=p_i^{n_i}$. Since a cyclic group of order $n$ is isomorphic to $\mathbb{Z}_n$, therefore $H_i \approx \mathbb{Z}_{p_i^{n_i}}$. Hence,
+       \begin{equation*}
+           G \approx \mathbb{Z}_{p_1^{n_1}} \oplus \mathbb{Z}_{p_2^{n_2}} \oplus \cdots \oplus \mathbb{Z}_{p_k^{n_k}},
+       \end{equation*}
+       where $p_i$'s are not necessarily distinct primes and the prime-powers $p_1^{n_1},p_2^{n_2},\dots,p_k^{n_k}$ are uniquely determined by $G$. Writing a group in this form is called \textit{determining the isomorphism class of $G$}.
+    \end{note}
+    
+    \subsection{The Isomorphism Classes of Abelian Groups}
+    \begin{note}
+        The Fundamental Theorem can be used as an algorithm to construct all Abelian groups of any order. Consider Abelian groups $G,|G|=p^k$, where $p$ is prime and $k \leq 4$. In general, there is one group of order $p^k$ for each set of positive integers whose sum is $k$ (such a set is called a \textit{partition of $k$}); that is, if
+        \begin{equation*}
+            k=n_1+n_2+\cdots n_t,
+        \end{equation*}
+        where $n_i$'s are positive integers, then
+        \begin{equation*}
+            \mathbb{Z}_{p^{n_1}} \oplus \mathbb{Z}_{p^{n_2}} \oplus \cdots \oplus \mathbb{Z}_{p^{n_t}}
+        \end{equation*}
+        is an Abelian group of order $p^k$ (Figure \ref{sec11.2}).
+        
+        \begin{figure}[!htbp]
+            \centering
+            \includegraphics[width=0.75\linewidth]{figures/sec11.2.png}
+            \caption{}
+            \label{sec11.2}
+        \end{figure}
+        
+        Furthermore, the uniqueness portion of the Fundamental Theorem guarantees that distinct partitions of $k$ yield distinct isomorphism classes. Thus, for example, $\mathbb{Z}_9 \oplus \mathbb{Z}_3$ is not isomorphic to $\mathbb{Z}_3 \oplus \mathbb{Z}_3 \oplus \mathbb{Z}_3$. A reliable mnemonic for comparing external direct products is the cancellation property. If $A$ is finite, then
+        \begin{equation*}
+            A \oplus B \approx A \oplus C \iff B \approx C.
+        \end{equation*}
+        Thus $\mathbb{Z}_4 \oplus \mathbb{Z}_4$ is not isomorphic to $\mathbb{Z}_4 \oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2$ since $\mathbb{Z}_4$ is not isomorphic to $\mathbb{Z}_2 \oplus \mathbb{Z}_2$.
+        
+        Now that one knows how to construct all the Abelian groups of prime power order, the next step is to construct all Abelian groups of a certain order $n$, where $n$ has two or more distinct prime divisors. First, write $n$ in prime-power decomposition form
+        \begin{equation*}
+            n=p_1^{n_1}p_2^{n_2}\cdots p_k^{n_k}.
+        \end{equation*}
+        Next, individually form all Abelian groups of order $p_1^{n_1}$, then $p_2^{n_2}$, and so on, as described earlier. Finally, form all possible external direct products of these groups. For example, let $G$ be an Abelian group of order
+        \begin{equation*}
+            n=1176=2^3\cdot3\cdot7^2.
+        \end{equation*}
+        Then, for $2^3$, since
+        \begin{align*}
+            p=2,k&=3\\
+            &=2+1\\
+            &=1+1+1,
+        \end{align*}
+        the possible isomorphism classes for Abelian groups of order $2^3$ are
+        \begin{align*}
+            \mathbb{Z}_8 &,\\
+            \mathbb{Z}_4 &\oplus\mathbb{Z}_2,\\
+            \mathbb{Z}_2 &\oplus\mathbb{Z}_2\oplus\mathbb{Z}_2.
+        \end{align*}
+        For 3, since $p=3,k=1$, the only possible isomorphism class for Abelian groups of order 3 is $\mathbb{Z}_3$. For $7^2$, since
+        \begin{align*}
+            p=7,k=2=1+1,
+        \end{align*}
+        the possible isomorphism classes for Abelian groups of order $7^2$ are
+        \begin{align*}
+            \mathbb{Z}_{49}, \mathbb{Z}_7\oplus\mathbb{Z}_7.
+        \end{align*}
+        Hence, the complete list of the possible distinct isomorphism classes for $G$ is
+        \begin{align*}
+            \mathbb{Z}_8 &\oplus \mathbb{Z}_3 \oplus \mathbb{Z}_{49}, \\
+            \mathbb{Z}_4 &\oplus \mathbb{Z}_2 \oplus \oplus \mathbb{Z}_3 \oplus \mathbb{Z}_{49}, \\
+            \mathbb{Z}_2 &\oplus \mathbb{Z}_2 \oplus\mathbb{Z}_2\oplus\mathbb{Z}_3\oplus \mathbb{Z}_{49}, \\
+            \mathbb{Z}_8 &\oplus \mathbb{Z}_3 \oplus\mathbb{Z}_7\oplus\mathbb{Z}_7, \\
+            \mathbb{Z}_4 &\oplus \mathbb{Z}_2 \oplus \mathbb{Z}_3\oplus\mathbb{Z}_7\oplus\mathbb{Z}_7, \\
+            \mathbb{Z}_2 &\oplus \mathbb{Z}_2 \oplus \mathbb{Z}_2\oplus\mathbb{Z}_3\oplus\mathbb{Z}_7\oplus\mathbb{Z}_7. \\
+        \end{align*}
+        
+        To determine which of the preceding six isomorphism classes represents the structure of $G$, one can compare the orders of the elements of $G$ with the orders of the elements in the six direct products, since by Theorem 6.2.7, two finite Abelian groups are isomorphic if and only if they have the same number of elements of each order. For example, if $G$ has any elements of order 8, then $G$ must be isomorphic to the first or fourth group above, since these are the only groups with elements of order 8. Then, check if $G$ has any elements of order 49, since the first group above has elements of order 49, but the fourth group does not.
+        
+        Consider some specific Abelian group $G:|G|=p_1^{n_1}p_2^{n_2}\cdots p_k^{n_k}$, where $p_i$'s are distinct primes. One can express $G$ as an internal direct product of cyclic groups of prime-power order. For simplicity, assume that $G$ has $2^n$ elements. First, compute the orders of all the elements of $G$. Second, select a element $a_1\in G$ of maximum order $2^r$. Then $\langle a_1 \rangle$ is one of the factors in the desired internal direct product. If $G\neq\langle a_1 \rangle$, select an element $a_2\in G$ of maximum order $2^s$ such that
+        \begin{equation*}
+            s \leq n-r \text{ and } a_2,a_2^2,a_2^4,\dots,a_2^{2^{s-1}}\notin\langle a_1 \rangle.
+        \end{equation*}
+         Then $\langle a_2 \rangle$ is a second direct factor. If $n\neq r+s$, select an element $a_3\in G$ of maximum order $2^t$ such that $t\leq n-r-s$ and
+         \begin{equation*}
+            a_3,a_3^2,a_3^4,\dots,a_2^{2^{t-1}} \notin\langle a_1 \rangle \times \langle a_2 \rangle = \{a_1^ia_2^j: 0\leq i<2^r,0\leq j<2^s\}.
+        \end{equation*}
+        Then $\langle a_3 \rangle$ is another direct factor. Continue in this fashion until the internal direct product $\langle a_1\rangle\times\langle a_2\rangle\times\langle a_3\rangle\times\cdots$ has the same order as $G$.
+        
+        The greedy algorithm for an Abelian Group $G$ of order $p^n$ is as follows:
+        \begin{enumerate}
+            \item Compute the orders of all the elements of $G$.
+            \item Select an $a_1\in G$ of maximum order and define $G_1=\langle a_1 \rangle$. Set $i=1$.
+            \item If $|G|=|G_i|$, stop. Otherwise, replace $i$ by $i+1$.
+            \item Select an $a_i\in G$ of maximum order $p^k$ such that $p^k\leq|G|/|G_{i-1}|$ and  $a_i,a_i^p,a_i^{p^2},\dots,a_i^{p^{k-1}}\notin G_{i-1}$, and define $G_i=G_{i-1}\times\langle a_i\rangle$.
+            \item Return to step 3.
+        \end{enumerate}
+        
+        In the general case where $|G|=p_1^{n_1}p_2^{n_2}\cdots p_k^{n_k}$, one simply use the algorithm to build up a direct product of order $p_1^{n_1}$, then another of order $p_2^{n_2}$, and so on. The direct product of all these pieces is the desired factorization of $G$.
+    \end{note}
+   
+   \begin{example}
+    Let $G=\{1,8,12,14,18,21,27,31,34,38,44,47,51,53,57,64\}$ under multiplication modulo 65. Since $|G|=16=2^4$,  the possible isomorphism classes for $G$ are
+        \begin{align*}
+           k&=4, & \mathbb{Z}_{16}&,\\
+           &=3+1, & \mathbb{Z}_8&\oplus\mathbb{Z}_2,\\
+           &=2+2, & \mathbb{Z}_4&\oplus\mathbb{Z}_4,\\
+           &=2+1+1, & \mathbb{Z}_4&\oplus\mathbb{Z}_2\oplus\mathbb{Z}_2,\\
+           &=1+1+1+1, & \mathbb{Z}_2&\oplus\mathbb{Z}_2\oplus\mathbb{Z}_2\oplus\mathbb{Z}_2.
+        \end{align*}
+        
+    Figure \ref{exp11.1} shows the orders of the elements of $G$.
+        
+        \begin{figure}[!htbp]
+            \centering
+            \includegraphics[width=0.95\linewidth]{figures/exp11.1.png}
+            \caption{}
+            \label{exp11.1}
+        \end{figure}
+        
+        From Figure \ref{exp11.1}, since $G$ has no elements of order 16 and 8, and $G$ only has three elements of order 2, it must be that either
+        \begin{equation*}
+            G \approx \mathbb{Z}_4\oplus\mathbb{Z}_4 \text{ or } G \approx \mathbb{Z}_4\oplus\mathbb{Z}_2\oplus\mathbb{Z}_2.
+        \end{equation*}
+        Since $\mathbb{Z}_4\oplus\mathbb{Z}_2\oplus\mathbb{Z}_2$ has a subgroup isomorphic to $\mathbb{Z}_2\oplus\mathbb{Z}_2\oplus\mathbb{Z}_2$, it has more than three elements of order 2. Therefore, it must be that $G \approx \mathbb{Z}_4\oplus\mathbb{Z}_4$.
+        
+        To express $G$ as an internal direct product, select an element of maximum order, say $8\in G$. Then $\langle8\rangle$ is a factor in the product. Next select a second element $a\in G$ such that $|a|=4$ and 
+        \begin{equation*}
+            a,a^2\notin\langle8\rangle=\{1,8,64,57\}. 
+        \end{equation*}
+        Since 
+        \begin{equation*}
+            12\in G, |12|=4, \langle 12 \rangle = \{12, 14, 38, 1\}
+        \end{equation*}
+        it follows that $\langle12\rangle$ is the second factor in the product. Since
+        \begin{equation*}
+            |\langle8\rangle\times\langle12\rangle|=16=|G|,
+        \end{equation*}
+        it follows that $G=\langle8\rangle\times\langle12\rangle$.
+   \end{example}
+   
+   \begin{example}
+       Let 
+       \begin{align*}
+           G&=\{1,8,17,19,26,28,37,44,46,53,62,64, \\
+           &71,73,82,89,91,98, 107, 109, 116, 118, 127, 134\}
+       \end{align*}
+        under multiplication modulo 135. Since $|G|=24=2^3\cdot3$, the possible isomorphism classes for Abelian groups of order $2^3$ are
+       \begin{align*}
+           k&=3, &\mathbb{Z}_8, \\
+           &=2+1, &\mathbb{Z}_4&\oplus\mathbb{Z}_2, \\ &=1+1+1, &\mathbb{Z}_2&\oplus\mathbb{Z}_2\oplus\mathbb{Z}_2.
+       \end{align*}
+       The possible isomorphism class for Abelian groups of order 3 is $\mathbb{Z}_3$. Hence the possible isomorphism classes for $G$ are
+       \begin{align*}
+           \mathbb{Z}_8\oplus\mathbb{Z}_3&\approx\mathbb{Z}_{24},\\
+           \mathbb{Z}_4\oplus\mathbb{Z}_2\oplus\mathbb{Z}_3&\approx\mathbb{Z}_{12}\oplus\mathbb{Z}_2,\\
+           \mathbb{Z}_2\oplus\mathbb{Z}_2\oplus\mathbb{Z}_2\oplus\mathbb{Z}_3&\approx\mathbb{Z}_6\oplus\mathbb{Z}_2\oplus\mathbb{Z}_2.
+       \end{align*}
+       Consider $8\in G$. By direct calculations, $8^6=109$ and $8^{12}=1$. Since $|8|=12$, $G$ is not isomorphic to $\mathbb{Z}_6\oplus\mathbb{Z}_2\oplus\mathbb{Z}_2$. Since $|109|=2=|134|$, $G$ is not isomorphic to $\mathbb{Z}_{24}$. Hence $G\approx\mathbb{Z}_{12}\oplus\mathbb{Z}_2$, and $G=\langle8\rangle\times\langle134\rangle$.
+   \end{example}
+   
+   \begin{note}
+       Rather than express an Abelian group as a direct product of cyclic groups of prime-power orders, it is often more convenient to combine the cyclic factors of relatively prime order to obtain a direct product of the form
+       \begin{equation*}
+           \mathbb{Z}_{n_1}\oplus\mathbb{Z}_{n_2}\oplus\cdots\oplus\mathbb{Z}_{n_k}, n_i \mid n_{i-1},
+       \end{equation*}
+       like in Example 11.2. For example,
+       \begin{equation*}
+           \mathbb{Z}_4\oplus\mathbb{Z}_4\oplus\mathbb{Z}_2\oplus\mathbb{Z}_9\oplus\mathbb{Z}_3\oplus\mathbb{Z}_5
+       \end{equation*}
+       would be written as
+       \begin{equation*}
+           \mathbb{Z}_{180}\oplus\mathbb{Z}_{12}\oplus\mathbb{Z}_2.
+       \end{equation*}
+       The greedy algorithm is easily adapted to accomplish this by replacing step 4 by 4': select an element $a_i \in G$ of maximum order $m$ such that $m\leq|G|/|G_{i-1}|$ and $a_i,a_i^2,\dots,a_i^{m-1} \notin G_{i-1}$,
+       and define $G_i=G_{i-1}\times\langle a_i \rangle$.
+   \end{note}
+    
     \noindent\fbox{\parbox{\linewidth}{
     \begin{corollary}
-            If $m$ divides the order of a finite Abelian group $G$, then $G$ has a subgroup of order $m$.
+            Let $G$ be a finite Abelian group. Then,
+            \begin{equation*}
+                m \mid |G| \implies \exists H \leq G:|H|=m.
+            \end{equation*}
     \end{corollary}
+    }}
+    
+    \begin{note}
+        Corollary 11.1.1 shows that the converse of Lagrange's Theorem is true for finite Abelian groups. Suppose $G$ is Abelian, $|G|=72$,  and one wishes to produce a $H \leq G, |H|=12$. By the Fundamental Theorem, since $|G|=72=2^33^2$, the possible isomorphism classes for Abelian groups of order $2^3$ and $3^2$ are
+        \begin{align*}
+            k&=3, & \mathbb{Z}_8, \\
+            &=2+1, & \mathbb{Z}_4&\oplus\mathbb{Z}_2, \\ &=1+1+1, &\mathbb{Z}_2&\oplus\mathbb{Z}_2\oplus\mathbb{Z}_2.
+        \end{align*}
+        and
+        \begin{align*}
+            k&=2, & \mathbb{Z}_9, \\
+            &=1+1, & \mathbb{Z}_3&\oplus\mathbb{Z}_3,
+        \end{align*}
+        respectively. Hence, $G$ is isomorphic to one of the following groups,
+        \begin{align*}
+            \mathbb{Z}_8&\oplus\mathbb{Z}_9, & \mathbb{Z}_8&\oplus\mathbb{Z}_3\oplus\mathbb{Z}_3, \\
+            \mathbb{Z}_4&\oplus\mathbb{Z}_2\oplus\mathbb{Z}_9, & \mathbb{Z}_4&\oplus\mathbb{Z}_2\oplus\mathbb{Z}_3\oplus\mathbb{Z}_3, \\
+            \mathbb{Z}_2&\oplus\mathbb{Z}_2\oplus\mathbb{Z}_2\oplus\mathbb{Z}_9, & \mathbb{Z}_2&\oplus\mathbb{Z}_2\oplus\mathbb{Z}_3\oplus\mathbb{Z}_3.
+        \end{align*}
+        By Corollary 11.1.1, since $12\mid72$, it follows that $\mathbb{Z}_8\oplus\mathbb{Z}_9\approx\mathbb{Z}_{72}$ and $\mathbb{Z}_4\oplus\mathbb{Z}_2\oplus\mathbb{Z}_3\oplus\mathbb{Z}_3\approx\mathbb{Z}_{12}\oplus\mathbb{Z}_6$ have a subgroup of order 12. To construct a subgroup of order 12 in $\mathbb{Z}_4\oplus\mathbb{Z}_2\oplus\mathbb{Z}_9$, one simply pieces together all of $\mathbb{Z}_4$ and the subgroup of order 3 in $\mathbb{Z}_9$; that is,
+        \begin{equation*}
+            \{(a,0,b):a\in\mathbb{Z}_4,b\in\{0,3,6\}\}.
+        \end{equation*}
+        An analogous procedure applies to the remaining cases and to any finite Abelian group.
+    \end{note}
+    
+    \subsection{Proof of the Fundamental Theorem}
+    \begin{note}
+        The proof of the Fundamental Theorem is long and complex so it will be broke down into a series of lemmas.
+    \end{note}
+    
+    \noindent\fbox{\parbox{\linewidth}{
+    \begin{lemma}
+        Let $G$ be a finite Abelian group, $|G|=p^nm$, where $p$ is a prime, $p\nmid m$. Then $G=H\times K$, where $H=\{x\in G: x^{p^n}=e\},K=\{x\in G: x^m=e\}$. Moreover, $|H|=p^n$.
+    \end{lemma}
+    }}
+    
+    \begin{proof}
+       Let $G$ be a finite Abelian group, $|G|=p^nm$, where $p$ is a prime, $p\nmid m$. Let $H=\{x\in G: x^{p^n}=e\},K=\{x\in G: x^m=e\}$.
+       
+       By Definition 9.2,
+       \begin{equation*}
+           H,K \lhd G, G=HK, H\cap K=\{e\} \implies G=H\times K.
+       \end{equation*} 
+       By One-Step Subgroup Test,
+       \begin{equation*}
+           H \subseteq G, a,b\in H, ab^{-1} \in H \implies H \leq G.
+       \end{equation*}
+       Let $a,b\in H$ and $c,d\in K$. Then since $G$ is Abelian,
+       \begin{align*}
+           (ab^{-1})^{p^n} &= a^{p^n}(b^{-1})^{p^n} \\
+           &= a^{p^n}(b^{p^n})^{-1} \\
+           &= ee^{-1} \\
+           &= e \\
+           \therefore ab^{-1} &\in H,
+       \end{align*}
+       and
+       \begin{align*}
+           (cd^{-1})^m &= c^m(d^{-1})^m \\
+           &= c^m(d^m)^{-1} \\
+           &= ee^{-1} \\
+           &= e \\
+           \therefore cd^{-1} &\in K.
+       \end{align*}
+       Hence,
+       \begin{equation*}
+           ab^{-1}\in H, cd^{-1} \in K \implies H,K \leq G.
+       \end{equation*}
+       
+      By Theorem 9.1,
+      \begin{equation*}
+          H \leq G, \forall x \in G, xHx^{-1} \subseteq G \implies H \lhd G.
+      \end{equation*}
+      Let $x\in G, h\in H, k\in K$. Let $xhx^{-1}\in xHx^{-1}, xkx^{-1}\in xKx^{-1}$, then
+       \begin{align*}
+           (xhx^{-1})^{p^n} &= x^{p^n}h^{p^n}(x^{-1})^{p^n} \\
+           &=x^{p^n}h^{p^n}(x^{p^n})^{-1} \\
+           &=  x^{p^n}e(x^{p^n})^{-1} \\
+           &= x^{p^n}(x^{p^n})^{-1} \\
+           &= e, \\
+           \therefore xhx^{-1} &\in H \implies xHx^{-1} \subseteq H,
+       \end{align*}
+       and
+       \begin{align*}
+           (xkx^{-1})^m &= x^mk^m(x^{-1})^m \\
+           &= x^mk^m(x^m)^{-1} \\
+           &= x^me(x^m)^{-1} \\
+           &= x^m(x^m)^{-1} \\
+           &= e, \\
+           \therefore xkx^{-1} &\in K \implies xKx^{-1} \subseteq K.
+       \end{align*}
+       Hence,
+       \begin{equation*}
+           H\lhd G, K\lhd G \iff \forall x\in G, xHx^{-1} \subseteq H, xKx^{-1} \subseteq K.
+       \end{equation*}
+       
+       By Theorem 0.2,
+       \begin{equation*}
+           \forall a,b \in \mathbb{Z}, a\neq 0, b\neq 0, \exists s,t \in \mathbb{Z}: \gcd(a,b)=as+bt.
+       \end{equation*}
+       Since $p\nmid m$,
+       \begin{equation*}
+           \gcd(m,p^n)=1=sm+tp^n, s,t\in \mathbb{Z}.
+       \end{equation*}
+       Let $x\in G$. Then
+       \begin{equation*}
+           x=x^1=x^{sm+tp^n}=x^{sm}x^{tp^n}.
+       \end{equation*}
+       By Corollary 7.1.4,
+       \begin{equation*}
+           |G|=n,a\in G \implies a^{|G|}=e.
+       \end{equation*}
+       Since $|G|=p^nm,x\in G$, it follows that
+       \begin{align*}
+           x^s \in G \implies (x^{sm})^{p^n} &= (x^s)^{p^nm} = e, \\
+           \therefore x^{sm} &\in H, \\
+           x^k \in g \implies (x^{tp^n})^m &= (x^t)^{p^nm} = e, \\
+           \therefore x^{tp^n} &\in K.
+       \end{align*}
+       Hence, $x\in HK \implies G \subseteq HK$. Let $hk \in HK, h\in H, k\in K$. Then
+       \begin{equation*}
+           h\in G, k\in G \implies hk \in G.
+       \end{equation*}
+       Hence, $HK \subseteq G$ and therefore $G=HK$.
+       
+       Let $x \in H \cap K$. By Corollary 4.1.2,
+       \begin{equation*}
+           a\in G, a^k=e \iff |a|\mid k.
+       \end{equation*}
+       Since $x \in H\cap K$, it follows that $x\in H, x\in K$ and
+       \begin{equation*}
+            x^{p^n}=e, x^m=e \iff |x| \mid p^n, |x|\mid m.
+       \end{equation*}
+       Since $1=sp^n+tm$, it follows that
+       \begin{equation*}
+           |x| \mid 1 \implies |x|=1.
+       \end{equation*}
+       Hence $x=e$ and $H\cap K=\{e\}$. Therefore, $G=H\times K$.
+       
+       By Theorem 7.2,
+       \begin{equation*}
+           H,K \leq G \implies |HK|=|H||K|/|H\cap K|.
+       \end{equation*}
+       Hence
+       \begin{align*}
+           p^nm=|G|&=|HK|\\
+           &=|H||K|/|H\cap K|\\
+           &=|H||K|/1\\
+           &=|H||K|. 
+       \end{align*}
+       By Lemma 0.1,
+       \begin{equation*}
+           p\mid ab \implies p\mid a \text{ or } p\mid b.
+       \end{equation*}
+       It follows that 
+       \begin{equation*}
+           p\mid p^nm=|H||K| \implies p\mid |H| \text{ or } p\mid |K|.
+       \end{equation*}
+       If $p\mid|K|$, then by Theorem 9.5,
+       \begin{equation*}
+           p\mid|G|\implies \exists x\in G:|x|=p.
+       \end{equation*}
+       Hence
+       \begin{equation*}
+           p\mid|K| \implies \exists x \in K:|x|=p.
+       \end{equation*}
+       By Corollary 4.1.2,
+       \begin{equation*}
+           x \in K, x^m=e \iff |x|=p\mid m.
+       \end{equation*}
+       But $p \nmid m$. Hence $p\nmid|K|\implies p\mid |H|$. Therefore $|H|=p^n$.
+    \end{proof}
+    
+    \begin{note}
+        Given an Abelian group $G,|G|=p_1^{n_1}p_2^{n_2}\cdots p_k^{n_k}$, where $p_i$'s are distinct primes. Let $G(p_i)=\{x\in G: x^{p_i^{n_i}}=e\}$. Then by Lemma 11.1 and induction,
+        \begin{equation*}
+            G=G(p_1)\times G(p_2)\times\cdots\times G(p_k), |G(p_i)|=p_i^{n_i}.
+        \end{equation*}
+    \end{note}
+    
+    \noindent\fbox{\parbox{\linewidth}{
+    \begin{lemma}
+        Let $G$ be an Abelian group, $|G|=p^n$. Then
+        \begin{equation*}
+            a\in G \text{ is a maximal order element} \implies G=\langle a\rangle\times K, K \leq G.
+        \end{equation*}
+    \end{lemma}
+    }}
+    
+    \begin{proof}
+       Let $G$ be an Abelian group, $|G|=p^n$.
+       
+       By induction, let $n=1$, then $|G|=p$. Let $a\in G$ be a maximal order element. By Lagrange's Theorem,
+       \begin{equation*}
+           \langle a \rangle \leq G \implies |a|=|\langle a \rangle| \mid |G| = p.
+       \end{equation*}
+       Hence $|a|\in\{1,p\}$. Since by definition, $a$ is a maximal order element, therefore 
+       \begin{equation*}
+           |a|=p=|G| \implies G=\langle a \rangle=\langle a\rangle\times\langle e\rangle.
+       \end{equation*}
+       Hence the statement is true for $n=1$. Next, assume that the statement is true for $1\leq k<n$.
+       
+       Let $a\in G$ be the maximal order element, $|a|=p^m$. Then $\forall x \in G, |x|=p^s\mid p^m,1\leq s\leq m$. Therefore by Theorem 4.1.2,
+       \begin{equation*}
+           x^{p^m}=x^{p^s}=e \iff p^s\mid(p^m-p^s).
+       \end{equation*}
+       Hence $\forall x \in G, x^{p^m}=e$. If $G=\langle a\rangle$, then $G=\langle a \rangle \times \langle e \rangle, \langle e \rangle\leq G$. The proof is completed. If $G\neq\langle a\rangle$. Let $b\in G, b \notin \langle a\rangle$ be the smallest order element. By Theorem 4.2.2,
+       \begin{equation*}
+           |b^p|=|b|/\gcd(|b|,p)=|b|/p.
+       \end{equation*}
+       By the manner in which $b$ was chosen, it follows that $b^p \in \langle a \rangle$.
+       (cont.)
+    \end{proof}
+    
+    \noindent\fbox{\parbox{\linewidth}{
+    \begin{lemma}
+        Let $G$ be an Abelian group, $|G|=p^n$. Then 
+        \begin{equation*}
+            G=H_1\times H_2\times\cdots\times H_k,
+        \end{equation*}
+        where $H_i$'s are cyclic. 
+    \end{lemma}
+    }}
+    
+    \begin{note}
+        By Lemma 11.1 and Note 11.6,
+        \begin{equation*}
+            G=G(p_1)\times G(p_2)\times\cdots\times G(p_k), |G(p_i)|=p_i^{n_i}.
+        \end{equation*}
+        By Lemma 11.3,
+        \begin{equation*}
+            G(p_i)=H_1 \times H_2 \times \cdots \times H_k,
+        \end{equation*}
+        where $H_i$'s are cyclic. Hence $G$ is an internal direct product of cyclic groups of prime order. Since 
+        \begin{equation*}
+            G(p_i)=\{x\in G: x^{p_i^{n_i}}=e\},
+        \end{equation*}
+        the groups $G(p_i)$ are uniquely determined by $G$.
+    \end{note}
+    
+    \noindent\fbox{\parbox{\linewidth}{
+    \begin{lemma}
+        Let $G$ be an Abelian group, $|G|=p^n$. If
+        \begin{align*}
+            G=H_1\times H_2\times\cdots\times H_m \text{ and }
+            G=K_1\times K_2\times\cdots\times K_n,
+        \end{align*}
+        where $H_i,K_i$ are nontrivial cyclic subgroups with
+        \begin{align*}
+            |H_1|\geq|H_2|\geq\cdots\geq|H_m| \text{ and }
+            |K_1|\geq|K_2|\geq\cdots\geq|K_n|,
+        \end{align*}
+        then $m=n$ and $|H_i|=|K_i|$.
+    \end{lemma}
+    }}
+    
+    \begin{proof}
+       
+    \end{proof}
+    
+    \section{Introduction to Rings}
+    \subsection{Motivation and Definition}
+    \fbox{\parbox{\linewidth}{
+    \begin{definition}[Ring]
+        A \textit{ring} $R$ is a set with two binary operations, addition and multiplication, such that $\forall a,b,c \in R$:
+        \begin{enumerate}
+            \item $a+b=b+a$.
+            \item $(a+b)+c = a+(b+c)$.
+            \item There is an additive identity $0\in R: \forall a\in R, a+0=a$.
+            \item $\forall a \in R, \exists-a \in R: a+(-a)=0$.
+            \item a(bc)=(ab)c.
+            \item $a(b+c)=ab+ac$ and $(b+c)a=ba+ca$.
+        \end{enumerate}
+    \end{definition}
+    }}
+    
+    \begin{note}
+        So, $R$ is an Abelian group under addition, also having an associative multiplication that is left and right distributive over addition. Note that multiplication need not be commutative. If $ab=ba$, then $R$ is \textit{commutative}. Also, $R$ need not have an identity under multiplication. If $e\in R, e\neq 0: \forall a \in R, ea=ae=a$, then $e$ is a \textit{unity} (or \textit{identity}). A nonzero element of a commutative ring with unity need not have a multiplicative inverse. When it does, it is a \textit{unit} of the ring. Thus, if $a^{-1}\in R$, then $a\in R$ is a unit.
+        
+        Let $a,b \in R, a\neq 0$, $R$ is commutative. If $\exists c \in R: b=ac$, then $a$ \textit{divides} $b$ (or $a$ is a \textit{factor} of $b$) and $a\mid b$. If $a$ does not divide $b$, then $a\nmid b$.
+        
+        Recall that if $a \in G$ under addition and $n \in \mathbb{Z}^+$, $na=a+a+\cdots+a$ ($n$ summands). When dealing with rings, this notation can cause confusion, since one also use juxtaposition for the ring multiplication. When there is the potential for confusion, one will use $n\cdot a = a+a+\cdots+a$ ($n$ summands).
+    \end{note}
+    
+    \subsection{Examples of Rings}
+    \begin{example}
+        $\mathbb{Z}$ under addition and multiplication is a commutative ring with unity 1. The units of $\mathbb{Z}$ are 1 and -1.
+    \end{example}
+    
+    \begin{example}
+        $\mathbb{Z}_n=\{0,1,\dots,n-1\}$ under addition and multiplication modulo $n$ is a commutative ring with unity 1. The set of units is $U(n)$.
+    \end{example}
+    
+    \begin{example}
+        The set $\mathbb{Z}[x]$ of all polynomials in the variable $x$ with integer coefficients under addition and multiplication is a commutative ring with unity $f(x)=1$.
+    \end{example}
+    
+    \begin{example}
+        The set $M_2(\mathbb{Z})$ of $2\times2$ matrices with integers entries is a noncommutative ring with unity $I$.
+    \end{example}
+    
+    \begin{example}
+        The set $2\mathbb{Z}$ of even integers under addition and multiplication is a commutative ring without unity.
+    \end{example}
+    
+    \begin{example}
+        The set of all continuous real-valued functions of a real variable whose graphs pass through the point (1,0) is a commutative ring without unity under the operations of pointwise addition and multiplication, i.e. $f+g)(a)=f(a)+g(a)$ and $(fg)(a)=f(a)g(a)$.
+    \end{example}
+    
+    \begin{example}
+        Let $R_1,R_2,\dots,R_n$ be rings. These rings can be used to construct a new ring as follows. Let
+        \begin{equation*}
+            R_1\oplus R_2 \oplus\cdots\oplus R_n =\{(a_1,a_2,\dots,a_n):a_i\in R_i\}
+        \end{equation*}
+        and define
+        \begin{equation*}
+            (a_1,a_2,\dots,a_n)+(b_1,b_2,\dots,b_n)=(a_1+b_1,a_2+b_2,\dots,a_n+b_n)
+        \end{equation*}
+        and
+        \begin{equation*}
+            (a_1,a_2,\dots,a_n)(b_1,b_2,\dots,b_n)=(a_1b_1,a_2b_2,\dots,a_nb_n).
+        \end{equation*}
+        Then $ R_1\oplus R_2 \oplus\cdots\oplus R_n$ is a ring called the \textit{direct sum} of $R_1,R_2,\dots,R_n$.
+    \end{example}
+    
+    
+    \subsection{Properties of Rings}
+    \begin{note}
+        $b-c$ denotes $b+(-c)$.
+    \end{note}
+    
+    \noindent\fbox{\parbox{\linewidth}{
+    \begin{theorem}[Rules of Multiplication]
+        Let $R$ be a ring, $a,b,c \in R$. Then
+        \begin{enumerate}
+            \item $a0=0a=0$.
+            \item $a(-b)=(-a)b=-(ab)$.
+            \item $(-a)(-b)=ab$.
+            \item $a(b-c)=a(b+(-c))=ab-ac$ and $(b-c)a=(b+(-c))a=ba-ca$.
+        \end{enumerate}
+        Futhermore, if $R$ has a unity element 1, then
+        \begin{enumerate}[resume]
+            \item $(-1)a=-a$.
+            \item $(-1)(-1)=1$.
+        \end{enumerate}
+    \end{theorem}
+    }}
+    
+    \begin{proof}
+        Let $R$ be a ring, $a,b,c \in R$.
+        \begin{enumerate}
+            \item By Definition 12.1.6,
+            \begin{equation*}
+                0+a0=a0=a(0+0)=a0+a0.
+            \end{equation*}
+            By cancellation,
+            \begin{align*}
+                0+a0+(-a0)&=a0+a0+(-a0) \\
+                0&=a0.
+            \end{align*}
+            Similarly,
+             \begin{align*}
+                0+0a&=0a=(0+0)a=0a+0a \\
+                0+0a+(-0a)&=0a+0a+(-0a) \\
+                0&=0a.
+            \end{align*}
+            Hence, $a0=0a=0$.
+            
+            \item By Definition 12.1.6,
+            \begin{align*}
+                a(-b)+ab&=a(-b+b)=a0=0 \\
+                a(-b)+ab+(-(ab))&=0+(-(ab)) \\
+                a(-b)&=-(ab).
+            \end{align*}
+            Similarly,
+            \begin{align*}
+                (-a)b+ab&=(-a+a)b=0b=0 \\
+                (-a)b+ab+(-(ab))&=0+(-(ab)) \\
+                (-a)b&=-(ab).
+            \end{align*}
+            Hence, $a(-b)=(-a)b=-(ab)$.
+            \item By Definition 12.1.6 and Theorem 12.1.1,
+            \begin{align*}
+                (-a)(-b)+(-ab)&=-a(-b+b)=-a0=0 \\
+                (-a)(-b)+(-ab)+ab&=0+ab \\
+                (-a)(-b)+(-a+a)b&=ab \\
+                (-a)(-b)+(-a+a)b&=ab \\
+                (-a)(-b)+0b&=ab \\
+                (-a)(-b)+0&=ab \\
+                \therefore (-a)(-b)&=ab.
+            \end{align*}
+            
+            \item By Definition 12.1.6 and Theorem 12.1.2,
+            \begin{align*}
+                a(b-c)&=a(b+(-c)) \\
+                &= ab+a(-c)\\
+                &= ab-ac.
+            \end{align*}
+            Similarly,
+            \begin{align*}
+                (b-c)a&=(b+(-c))a\\
+                &=ba+(-c)a\\
+                &=ba-ca.
+            \end{align*}
+        \end{enumerate}
+        
+        Assume that $1\in R$, then
+        \begin{enumerate}[resume]
+            \item By Theorem 12.1.2, $(-1)a=-(1a)=-a$.
+            
+            \item By Theorem 12.1.3, $(-1)(-1)=(1)(1)=1$.
+        \end{enumerate}
+    \end{proof}
+    
+    \noindent\fbox{\parbox{\linewidth}{
+    \begin{theorem}[Uniqueness of the Unity and Inverses]
+        Let $R$ be a ring. Then
+        \begin{enumerate}
+            \item $R$ has a unity $\implies$ it is unique.
+            \item $a\in R$, $a^{-1} \in R \implies a^{-1}\in R$ is unique.  
+        \end{enumerate}
+    \end{theorem}
     }}
 \end{document}
