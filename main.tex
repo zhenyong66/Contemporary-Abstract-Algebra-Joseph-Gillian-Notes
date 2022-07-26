@@ -5399,4 +5399,136 @@ Figure \ref{composition_permutation} shows the composition of permutations $\sig
         \end{enumerate}
     \end{theorem}
     }}
+    
+    \begin{proof}
+        Let $R$ be a ring.
+        \begin{enumerate}
+            \item Assume that $\exists e_1,e_2\in R:e_1a=ae_2=a$ and $e_2a=ae_2=a$. Then
+            \begin{align*}
+                e_1e_2=e_2e_1=e_1 \text{ and } e_2e_1=e_1e_2=e_2.
+            \end{align*}
+            Hence $e_1=e_2e_2=e_2e_1=e_2$.
+            
+            \item Assume that $a\in R, \exists a_1,a_2\in R: a_1a=aa_1=e$ and $a_2a=aa_2=e$. Then
+            \begin{align*}
+                a_1a&=a_2a & aa_1&=aa_2\\
+                a_1aa_1&=a_2aa_1 & a_1aa_1&=a_1aa_2 \\
+                a_1e&=a_2e & ea_1&=ea_2\\
+                a_1&=a_2, & a_1&=a_2.
+            \end{align*}
+        \end{enumerate}
+    \end{proof}
+    
+    \subsection{Subrings}
+    \fbox{\parbox{\linewidth}{
+    \begin{definition}[Subring]
+        $S \subseteq R$ is a \textit{subring of} $R$ is a ring with the operations of $R$.
+    \end{definition}
+    }}
+    
+    \noindent\fbox{\parbox{\linewidth}{
+    \begin{theorem}[Subring Test]
+        Let $R$ be a ring, $S\subseteq R, S\neq \emptyset$. Then
+        \begin{equation*}
+            a,b \in S, a-b,ab \in S \implies S \text{ is a subring of } R.
+        \end{equation*}
+    \end{theorem}
+    }}
+    
+    \begin{proof}
+        Let $R$ be a ring, $S\subseteq R, S\neq \emptyset$. 
+        
+        Assume that $a,b \in S, a-b,ab \in S$. Since $R$ is a ring and $S \subseteq R$, by One-Step Subgroup test,
+        \begin{equation*}
+            a,b \in S, a-b\in S \implies S \leq R.
+        \end{equation*}
+        So $S$ is closed under addition, $0 \in S$, and $\forall a \in S, \exists -a \in S: a+(-a)=0$. Hence addition is a binary operation in $S$ and $S$ fulfills property 1 to 4 in Definition 12.1.
+        
+        Since $S \subseteq R$ and $a,b \in S, ab \in S$, it follows that multiplication is a binary operation in $S$ and $S$ fulfills property 5 and 6 of Theorem 12.1.
+        
+        Hence by Definition 12.1, $S$ is a subring of $R$.
+    \end{proof}
+    
+    \begin{example}
+        $\{0\}$ and $R$ are subrings of any ring $R$. 
+        
+        Since $\{0\}\subseteq R, \{0\}\neq\emptyset, 0-0,00 \in \{0\}$, by Theorem 12.3, $\{0\}$ is a subring of $R$.
+        
+        Since $R \subseteq R, 0 \in R \implies R \neq\emptyset, a,b \in R, a-b,ab \in R$, by Theorem 12.3, $R$ is a subring of $R$.
+    \end{example}
+    
+    \begin{example}
+        $\{0,2,4\}$ is a subring of the ring $\mathbb{Z}_6$. 
+        
+        Since $\{0,2,4\}\subseteq\mathbb{Z}_6,\{0,2,4\}$, and
+        \begin{align*}
+            0+0&=2+4=4+2=0, & 0(0)&=0(2)=0(4)=2(0)=4(0)=0, \\
+            0+2&=2+0=4+4=2, & 2(2)&=4(4)=4,\\
+            0+4&=2+2=4+0=4, & 2(4)&=4(2)=2,
+        \end{align*}
+        by Theorem 12.3, $\{0,2,4\}$ is a subgroup of $\mathbb{Z}_6$.
+        
+        Note that although 1 is the unity in $\mathbb{Z}_6$, 4 is the unity in $\{0,2,4\}$.
+    \end{example}
+    
+    \begin{example}
+        For each $n \in \mathbb{Z}^+$, the set
+        \begin{equation*}
+            n\mathbb{Z}=\{0,\pm n, \pm 2n, \pm 3n, \dots\}
+        \end{equation*}
+        is a subring of $\mathbb{Z}$.
+        
+        Since $n\mathbb{Z} \subseteq \mathbb{Z}, 0\in n\mathbb{Z} \implies n\mathbb{Z}\neq\emptyset$, and
+        \begin{equation*}
+            a,b \in n\mathbb{Z}, a-b,ab\in n\mathbb{Z},
+        \end{equation*}
+        By Theorem 12.3, $n\mathbb{Z}$ is a subring of $\mathbb{Z}$.
+    \end{example}
+    
+    \begin{example}
+        The set of Gaussian integers
+        \begin{equation*}
+            \mathbb{Z}[i]=\{a+bi:a,b\in\mathbb{Z}\}
+        \end{equation*}
+        is a substring of $\mathbb{C}$.
+        
+        Since $\mathbb{Z}[i] \subseteq\mathbb{C}, 0\in\mathbb{Z}[i]\implies\mathbb{Z}[i]\neq\emptyset$, and since $\mathbb{C},\mathbb{Z}$ are rings, $a+bi,c+di \in \mathbb{Z}[i]$,
+        \begin{equation*}
+             (a+bi)+(c+di)=(a+b)+(c+d)i \in \mathbb{Z}[i],
+        \end{equation*}
+        and
+        \begin{align*}
+            (a+bi)(c+di)&=(a+bi)c+(a+bi)(di) \\
+            &= ac+bci+adi-bd \\
+            &= (ac-bd)+(ad+bc)i\in\mathbb{Z}[i],
+        \end{align*}
+        by Theorem 12.3, $\mathbb{Z}[i]$ is a subring of $\mathbb{C}$.
+    \end{example}
+    
+    \begin{example}
+        Let $R$ be the ring of all real-valued functions of a single real variable under pointwise addition and multiplication. The subset $S\subseteq R$ of functions whose graphs pass through the origin forms a subring of $R$.
+    \end{example}
+    
+    \begin{example}
+        The set
+        \begin{equation*}
+        \bigg\{
+            \begin{bmatrix}
+               a & 0 \\ 0 & b
+            \end{bmatrix}
+            : a,b\in\mathbb{Z}\bigg\}
+        \end{equation*}
+        is a subring of the ring of all $2\times2$ matrices over $\mathbb{Z}$.
+    \end{example}
+    
+    \begin{note}
+        The relationship between a ring and its various subrings can be depicted as a subring lattice diagram (Figure \ref{subring-lattice-diagram}). In such a diagram, any ring is a subring of all the rings that it is connected to by one or more upward lines.
+    \end{note}
+    
+    \begin{figure}[!htbp]
+        \centering
+        \includegraphics[width=0.7\linewidth]{figures/subring-lattice-diagram.png}
+        \caption{}
+        \label{subring-lattice-diagram}
+    \end{figure}
 \end{document}
