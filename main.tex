@@ -5531,4 +5531,236 @@ Figure \ref{composition_permutation} shows the composition of permutations $\sig
         \caption{}
         \label{subring-lattice-diagram}
     \end{figure}
+    
+\section{Integral Domains}
+\subsection{Definition and Examples}
+\fbox{\parbox{\linewidth}{
+\begin{definition}[Zero-Devisors]
+    Let $R$ be a commutative ring, $a\in R, a\neq 0$. Then
+    \begin{equation*}
+        \exists b \in R, b\neq0: ab=0 \implies a \text{ is a \textit{zero-divisor.}}
+    \end{equation*}
+\end{definition}
+}}
+
+\noindent\fbox{\parbox{\linewidth}{
+\begin{definition}[Integral Domain]
+    An \textit{integral domain} is a commutative ring with unity and no zero-divisors.
+\end{definition}
+}}
+
+\begin{note}
+    Thus, in an integral domain, a product is 0 only when one of the factor is 0; that is, $ab=0$ only when $a=0$ or $b=0$.
+\end{note}
+
+\begin{example}
+    The ring of integers is an integral domain.
+\end{example}
+
+\begin{example}
+    The ring of Gaussian integers $\mathbb{Z}[i]=\{a+bi:a,b\in\mathbb{Z}\}$ is an integral domain.
+\end{example}
+
+\begin{example}
+    The ring $\mathbb{Z}[x]$ of polynomials with integer coefficients is an integral domain.
+\end{example}
+
+\begin{example}
+    The ring $\mathbb{Z}[\sqrt{2}]=\{a+b\sqrt{2}:a,b\in\mathbb{Z}\}$ is an integral domain.
+\end{example}
+
+\begin{example}
+    The ring $\mathbb{Z}_p$ of integers modulo a prime $p$ is an integral domain.
+\end{example}
+
+\begin{example}
+    The ring $\mathbb{Z}_n$ of integers modulo $n$ is \textit{not} an integral domain when $n$ is not prime.
+\end{example}
+
+\begin{example}
+    The ring $M_2(\mathbb{Z})$ of $2\times2$ matrices over the integers is \textit{not} an integral domain.
+\end{example}
+
+\begin{example}
+    $\mathbb{Z}\oplus\mathbb{Z}$ is \textit{not} an integral domain.
+\end{example}
+
+\noindent\fbox{\parbox{\linewidth}{
+\begin{theorem}[Cancellation]
+    Let $R$ be an integral domain. Let $a,b,c \in R$. Then
+    \begin{equation*}
+        a\neq0, ab=ac \implies b=c.
+    \end{equation*}
+\end{theorem}
+}}
+
+\begin{proof}
+    Let $R$ be an integral domain. Let $a,b,c \in R$. Assume that $a\neq0, ab=ac$. Then by Definition 12.1.6,
+    \begin{align*}
+        ab-ac&=a(b-c)=0.
+    \end{align*}
+    By Definition 13.2,
+    since $R$ is an integral domain, 
+    \begin{equation*}
+        a(b-c)=0,a\neq0 \implies b-c=0.
+    \end{equation*}
+    Hence, $b-c=0\implies b=c$.
+\end{proof}
+
+\subsection{Fields}
+\fbox{\parbox{\linewidth}{
+\begin{definition}[Field]
+    A \textit{field} is a commutative ring with unity in which every nonzero element is a unit.
+\end{definition}
+}}
+
+\begin{note}
+    To verify that every field is an integral domain, let $R$ be a field, observe that if $a,b\in R, a\neq0, ab=0$, then by Definition 13.3, $a\in R$ is a unit and hence $a^{-1}\in R$, so
+    \begin{align*}
+        ab&=0\\
+        a^{-1}ab&=a^{-1}0\\
+        \therefore b&=0.
+    \end{align*}
+    Hence by Definition 13.2, $R$ is a integral domain.
+    
+    It is often helpful to think of $ab^{-1}$ as $a$ divided by $b$. With this in mind, a field can be thought of as simply an algebraic system that is closed under addition, subtraction, multiplication, and division (except by 0). Some examples of fields are the complex numbers, the real numbers, the rational numbers.
+\end{note}
+
+\noindent\fbox{\parbox{\linewidth}{
+\begin{theorem}[Finite Integral Domains Are Fields]
+    A finite integral domain is a field.
+\end{theorem}
+}}
+
+\begin{proof}
+    Let $D$ be a finite integral domain. Let $a\in D, a\neq0$. If $a=1$, then $a(1)=1$. Since $1\in D$, it follows that $a^{-1}=1$ and $a$ is a unit.
+    
+    If $a\neq1$, then since $D$ is finite, the elements $a,a^2,a^3,\dots\in D$ are not all distinct. So 
+    \begin{equation*}
+        \exists i,j \in \mathbb{Z}, i>j: a^i=a^j.
+    \end{equation*}
+    Then by cancellation,
+    \begin{align*}
+        a^i&=a^j \\
+        a^ia^{-j}&=a^ja^{-j} \\
+        a^{i-j}&=1.
+    \end{align*}
+    Since $a\neq1$, it follows that
+    \begin{equation*}
+        i-j > 1 \implies i-j-1 > 0.
+    \end{equation*}
+    So 
+    \begin{equation*}
+        aa^{i-j-1}=a^{i-j}=1 \implies a^{-1}=a^{i-j} \in D
+    \end{equation*}
+    and $a$ is a unit. By Definition 13.3, $D$ is a field.
+\end{proof}
+
+\noindent\fbox{\parbox{\linewidth}{
+\begin{corollary}[$\mathbb{Z}_p$ Is a Field]
+    For every prime $p$, the ring of integers modulo $p$, $\mathbb{Z}_p$, is a field. 
+\end{corollary}
+}}
+
+\begin{proof}
+    Let $p$ be a prime and let  $\mathbb{Z}_p=\{0,1,2,\dots,p-1\}$ be a ring.
+    Since $1\in\mathbb{Z}_p$ and $a,b\in\mathbb{Z}_p, ab=ba$, $\mathbb{Z}_p$ is a finite commutative ring with unity.
+    
+    Assume that $a,b\in\mathbb{Z}_p, a\neq0, ab=0$, then 
+    \begin{equation*}
+        ab=0 \implies ab=pk, k\in\mathbb{Z}.
+    \end{equation*}
+    Since $p\mid pk \implies p\mid ab$, so $p\mid a$ or $p\mid b$. If $p\mid a$, then $0\leq a<p\implies a=0$. If $p\mid b$, then $0\leq b<p\implies b=0$.
+    
+    Hence $\mathbb{Z}_p$ is a finite integral domain and by Theorem 13.2, $\mathbb{Z}_p$ is a field.
+\end{proof}
+
+\begin{example}[Field with Nine Elements]
+    Let 
+    \begin{align*}
+        \mathbb{Z}_3[i]&=\{a+bi:a,b\in\mathbb{Z}_3\} \\
+        &=\{0,1,2,i,1+i,2+i,2i,1+2i,2+2i\},
+    \end{align*}
+    where $i^2=-1$. This is the ring of Gaussian integers modulo 3. Elements are added and multiplied as in the complex numbers, except that the coefficients are reduced modulo 3. In particular, $-1=2$. Figure \ref{Z_3[i]-multiplication-table} shows the multiplication table for the nonzero elements of $\mathbb{Z}_3[i]$.
+    
+    \begin{figure}[!htbp]
+        \centering
+        \includegraphics[width=0.9\linewidth]{figures/Z_3[i]-multiplication-table.png}
+        \caption{Multiplication Table for $\mathbb{Z}_3[i]$.}
+        \label{Z_3[i]-multiplication-table}
+    \end{figure}
+\end{example}
+
+\begin{example}
+    Consider the ring $\mathbb{Q}[\sqrt{2}]=\{a+b\sqrt{2}:a,b\in\mathbb{Q}\}$. The multiplicative inverse of any nonzero element of the form $a+b\sqrt{2}$ is $1/(a+b\sqrt{2})$. To verify that $\mathbb{Q[\sqrt{2}]}$ is a field, one must show that $1/(a+b\sqrt{2})$ can be written in the form $c+d\sqrt{2}$. This process is called "rationalizing the denominator". Specifically,
+    \begin{equation*}
+        \frac{1}{a+b\sqrt{2}}=\frac{1}{a+b\sqrt{2}}\frac{a-b\sqrt{2}}{a-b\sqrt{2}}=\frac{a}{a^2-2b^2}-\frac{b}{a^2-2b^2}\sqrt{2}.
+    \end{equation*}
+    Note that $a+b\sqrt{2}\neq0$ guarantees that $a-b\sqrt{2}\neq0$.
+\end{example}
+
+\subsection{Characteristic of a Ring}
+\fbox{\parbox{\linewidth}{
+\begin{definition}[Characteristic of a Ring]
+    The \textit{characteristic} of a ring $R$, char $R=$ the least $n\in\mathbb{Z}^+:nx=0, \forall x \in R$. If no such integer exists, then char $R=0$.
+\end{definition}
+}}
+
+\begin{note}
+    Thus, char $\mathbb{Z}=0$, and char $\mathbb{Z}_n=n$. An infinite ring can have a nonzero characteristic. The ring $\mathbb{Z}_2[x]$ of all polynomials with coefficients in $\mathbb{Z}_2$ has characteristic 2 (Addition and multiplication are done as for polynomials with ordinary integer coefficients except that the coefficients are reduced modulo 2). 
+\end{note}
+
+\noindent\fbox{\parbox{\linewidth}{
+\begin{theorem}[Characteristic of a Ring with Unity]
+    Let $R$ be a ring with unity 1. Then
+    \begin{enumerate}
+        \item $|1|=\infty$ under addition $\implies$ char $R=0$.
+        \item $|1|=n$ under addition $\implies$ char $R=n$.
+    \end{enumerate}
+\end{theorem}
+}}
+
+\begin{proof}
+     Let $R$ be a ring with unity 1.
+     \begin{enumerate}
+         \item Assume that $|1|=\infty$ under addition. Then $1+1+\cdots\neq0$. Let $n\in\mathbb{Z}^+, x\in R$ be arbitrary and $nx=0$, then $x=k\cdot1$ and
+         \begin{align*}
+             nx&=0 \\
+             n(k\cdot1)&=0 \\
+             n(\underbrace{1+1+\cdots}_k)&=0 \implies n=0.
+         \end{align*}
+         Since $n$ is arbitrary, this is true for the least $n\in\mathbb{Z}^+$. Hence by Definition 13.4, char $R=0$.
+         
+         \item Assume that $|1|=n$ under addition. Then $n$ is the least positive integer s.t. $n\cdot1=0$. Let $x\in R$ be arbitrary, then
+         \begin{align*}
+             nx&=n(1\cdot x)=(n\cdot1)x=0x=0.
+         \end{align*}
+         Hence by Definition 13.4, char $R=n$.
+     \end{enumerate}
+\end{proof}
+
+\noindent\fbox{\parbox{\linewidth}{
+\begin{theorem}[Characteristic of an Integral Domain]
+    Let $R$ be an integral domain. Then char $R=0$ or prime.
+\end{theorem}
+}}
+
+\begin{proof}
+     Let $R$ be an integral domain. Then by Theorem 13.3, if $|1|=\infty$, then char $R=0$. Let $|1|=n$, then char $R=n$. Since $1\in R, |1|=n$, it follows that $n\in R$. Hence 
+     \begin{equation*}
+         \exists s,t \in R: n=st, 1\leq s,t \leq n.
+     \end{equation*}
+     Then,
+     \begin{equation*}
+         0=n\cdot1=(st)\cdot1=(s\cdot1)(t\cdot1).
+     \end{equation*}
+     Since $R$ is an integral domain, it follows that $s\cdot1=0$ or $t\cdot1=0$. Since $n$ is the least positive integer s.t. $n\cdot1=0$, it follows that $s=n$ or $t=n$. Since $n=st$, it follows that $s,t\mid n$. If $s=n$, then $t=1$. If $t=n$, then $s=1$. So $n$ is only divisible by 1 and itself. Hence, $n$ is prime.
+\end{proof}
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/ring-summary.png}
+    \caption{Summary of rings and their properties.}
+    \label{ring-summary}
+\end{figure}
 \end{document}
